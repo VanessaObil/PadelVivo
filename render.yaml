@@ -1,7 +1,6 @@
 services:
-  - type: web
+  - type: docker
     name: padelvivo-app
-    env: docker
     repo: https://github.com/VanessaObil/PadelVivo
     region: oregon
     plan: free
