@@ -1,13 +1,14 @@
 services:
-  - type: docker
+  - type: web
     name: padelvivo-app
+    env: docker
     repo: https://github.com/VanessaObil/PadelVivo
     region: oregon
     plan: free
     dockerComposeFilePath: ./docker-compose.yml
     envVars:
       - key: DB_URL
-        value: jdbc:mariadb://host:puerto/basededatos
+        value: jdbc:mariadb://mariadb:3308/PadelVivo
       - key: DB_USERNAME
         value: root
       - key: DB_PASSWORD
