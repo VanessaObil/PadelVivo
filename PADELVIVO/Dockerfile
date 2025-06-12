@@ -1,21 +1,21 @@
-# Etapa 1: Build
-FROM node:16-alpine as build-stage
+FROM node:18 AS build-stage
 WORKDIR /app
 
-# Copia archivos de package.json y package-lock.json e instala dependencias
+# Copia sólo los archivos de dependencias para aprovechar cache
 COPY package*.json ./
+
 RUN npm install
 
-# Copia el resto del código y genera el build de producción
-COPY . .
-RUN npm run build --prod
+# Copia todo el código fuente
+COPY ./ ./
 
-# Etapa 2: Serve con Nginx
+# Build producción (ajusta según tu proyecto)
+RUN npm run build -- --prod
+
+# Stage final para servir con nginx
 FROM nginx:alpine
-# Copia la build generada en el stage anterior a la ruta de nginx
+
 COPY --from=build-stage /app/dist/padelvivo /usr/share/nginx/html
 
-# Expone el puerto 80
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
