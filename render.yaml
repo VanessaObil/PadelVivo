@@ -9,7 +9,7 @@ services:
     dockerComposeFilePath: ./docker-compose.yml
     envVars:
       - key: DB_URL
-        value: jdbc:mariadb://<host-publico>:<puerto>/PadelVivo
+        value: jdbc:mariadb://mariadb:3308/PadelVivo
       - key: DB_USERNAME
         value: root
       - key: DB_PASSWORD
