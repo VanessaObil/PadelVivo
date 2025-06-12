@@ -1,0 +1,314 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales */
+html, body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f2f2f2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden; /* 👈 Previene scroll horizontal */
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ------------------ NAVBAR ------------------ */
+.anonymous-navbar, .admin-navbar, .user-navbar {
+  background-color: white;
+  padding: 10px 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.navbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+  cursor: pointer;
+}
+
+.navbar-title-mobile {
+  flex-grow: 1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.menu-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+ul.menu-open {
+  display: flex;
+}
+
+ul li a, ul li button {
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+ul li a:hover, ul li button:hover {
+  background-color: #e0e7ff;
+}
+
+.login-button, .logout-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover, .logout-button:hover {
+  background-color: #0056b3;
+}
+
+/* ------------------ FORMULARIO ------------------ */
+.main-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.register-box {
+  background-color: #ffffff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.register-box h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: #007bff;
+  text-align: center;
+}
+
+.register-box form {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button[type="submit"] {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="submit"]:disabled {
+  background-color: #a0bffb;
+  cursor: not-allowed;
+}
+
+.success-message {
+  color: #28a745;
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* ------------------ FOOTER ------------------ */
+.footer {
+  background-color: #121242;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+  /* Navbar ajustes */
+  .navbar-header {
+    flex-wrap: nowrap;
+  }
+
+  .navbar-title-mobile {
+    display: block;
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  /* Menú móvil: que se muestre en columna */
+  ul.menu-open {
+    flex-direction: column;
+  }
+
+  /* Formulario en una sola columna */
+  .form-columns {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-column {
+    flex: none;
+    width: 100%;
+  }
+
+  .register-box {
+    max-width: 100%;
+    padding: 20px 15px;
+  }
+
+  .register-box h2 {
+    font-size: 28px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .footer {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+}

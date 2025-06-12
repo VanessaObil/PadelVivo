@@ -1,0 +1,119 @@
+<div class="main-login">
+  <div class="register-container">
+    <div class="register-box">
+      <h2>Crear Partido</h2>
+
+      <form #form="ngForm" (ngSubmit)="crearPartido()" novalidate>
+        <div class="form-columns">
+          <!-- Primera columna -->
+          <div class="form-column">
+            <div class="form-group">
+              <label for="partidoId">ID del Partido</label>
+              <input
+                type="text"
+                name="partidoId"
+                [(ngModel)]="partido.partidoId"
+                required
+                #partidoId="ngModel"
+                placeholder="ID del Partido"
+              />
+              <div *ngIf="partidoId.invalid && partidoId.touched" class="error">
+                El ID es obligatorio
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="marcadorActual">Marcador Actual</label>
+              <input
+                type="text"
+                name="marcadorActual"
+                [(ngModel)]="partido.marcadorActual"
+                placeholder="6-4, 3-6"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="estadoPartido">Estado</label>
+              <select
+                name="estadoPartido"
+                [(ngModel)]="partido.estadoPartido"
+              >
+                <option value="">Selecciona estado</option>
+                <option value="Pending">Pendiente</option>
+                <option value="live">En juego</option>
+                <option value="Finished">Finalizado</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fechaPartido">Fecha del Partido</label>
+              <input
+                type="date"
+                name="fechaPartido"
+                [(ngModel)]="partido.fechaPartido"
+                required
+                #fechaPartido="ngModel"
+              />
+              <div
+                *ngIf="fechaPartido.invalid && fechaPartido.touched"
+                class="error"
+              >
+                La fecha es obligatoria
+              </div>
+            </div>
+          </div>
+
+          <!-- Segunda columna -->
+          <div class="form-column">
+            <div class="form-group">
+              <label for="setsInput">Sets Actuales (ej: 2, 3)</label>
+              <input
+                type="text"
+                name="setsInput"
+                [(ngModel)]="setsInput"
+                placeholder="Ej: 2,3"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="puntosInput">Puntos Actuales (ej: 15,30,40)</label>
+              <input
+                type="text"
+                name="puntosInput"
+                [(ngModel)]="puntosInput"
+                placeholder="Ej: 15,30,40"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="jugadores">Jugadores (coma separados)</label>
+              <input
+                type="text"
+                name="jugadores"
+                [(ngModel)]="jugadoresInput"
+                placeholder="Jugador A, Jugador B, Jugador C, Jugador D"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="nacionalidades">Nacionalidades (coma separadas)</label>
+              <input
+                type="text"
+                name="nacionalidades"
+                [(ngModel)]="nacionalidadesInput"
+                placeholder="ES, AR, US, FR"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="form.invalid">Crear Partido</button>
+
+        <div *ngIf="mensaje" class="success-message">{{ mensaje }}</div>
+        <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2025 Mi Proyecto de Gestión de Torneos</div>

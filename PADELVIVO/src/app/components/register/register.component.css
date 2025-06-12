@@ -1,0 +1,227 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+/* Contenedor principal */
+.main-login {
+  display: flex;
+  height: calc(100vh - 60px); /* Ajuste por footer */
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* Panel lateral */
+.login-side {
+  flex: 0 0 50%;
+  background-color: #121242;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.login-side .logo {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+.login-side .logo-letras {
+  width: 400px;
+  margin-bottom: 1rem;
+}
+
+.login-side p {
+  color: #f2f2f2;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 20px;
+}
+
+/* Contenedor de formulario */
+.register-container {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Caja del formulario */
+.register-box {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-box h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.register-box form {
+  width: 100%;
+}
+
+/* Grupos de formularios */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: solid 1px #333333;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón de envío */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: #ff4d4f;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Footer */
+.footer {
+  background-color: #121242;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Logos */
+.logo,
+.logo-letras {
+  transition: transform 0.3s ease;
+}
+
+.logo:hover,
+.logo-letras:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* 🔁 Responsive */
+@media (max-width: 992px) {
+  .main-login {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .login-side,
+  .register-container {
+    flex: unset;
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .login-side .logo {
+    width: 180px;
+  }
+
+  .login-side .logo-letras {
+    width: 240px;
+  }
+
+  .login-side p {
+    font-size: 1.3rem;
+  }
+
+  .register-box {
+    padding: 30px 20px;
+  }
+
+  .register-box h2 {
+    font-size: 28px;
+  }
+
+  button[type="submit"] {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-side p {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+
+  .register-box {
+    padding: 25px 15px;
+  }
+
+  .register-box h2 {
+    font-size: 24px;
+  }
+
+  .login-side .logo {
+    width: 130px;
+  }
+
+  .login-side .logo-letras {
+    width: 200px;
+  }
+}
+.form-group span {
+  color: red;
+}.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+

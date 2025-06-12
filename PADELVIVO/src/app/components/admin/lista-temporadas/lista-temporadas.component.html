@@ -1,0 +1,101 @@
+<div class="header">
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+    rel="stylesheet"
+  />
+  <h2>GESTIÓN DE TEMPORADAS</h2>
+</div>
+
+<div class="administrador-gestion-temporadas">
+  <div class="filters">
+    <div class="filter-group">
+      <label for="año">Año</label>
+      <select id="año">
+        <option value="">Seleccionar Año</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="nombreTemporada">Nombre de la Temporada</label>
+      <select id="nombreTemporada">
+        <option value="">Seleccionar Temporada</option>
+      </select>
+    </div>
+    <button class="add-button" [routerLink]="'/admin/crear-temporada'">
+      Añadir Temporada
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table class="temporadas-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
+          <th>Año</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let temporada of temporadas">
+  <td>
+    <ng-container *ngIf="editandoId === temporada.id; else nombre">
+      <input [(ngModel)]="temporada.name" />
+    </ng-container>
+    <ng-template #nombre>{{ temporada.name }}</ng-template>
+  </td>
+
+  <td>
+    <ng-container *ngIf="editandoId === temporada.id; else inicio">
+      <input type="date" [(ngModel)]="temporada.startDate" />
+    </ng-container>
+    <ng-template #inicio>{{ temporada.startDate | date }}</ng-template>
+  </td>
+
+  <td>
+    <ng-container *ngIf="editandoId === temporada.id; else fin">
+      <input type="date" [(ngModel)]="temporada.endDate" />
+    </ng-container>
+    <ng-template #fin>{{ temporada.endDate | date }}</ng-template>
+  </td>
+
+  <td>
+    <ng-container *ngIf="editandoId === temporada.id; else anio">
+      <input type="number" [(ngModel)]="temporada.year" />
+    </ng-container>
+    <ng-template #anio>{{ temporada.year }}</ng-template>
+  </td>
+
+  <td class="actions">
+    <ng-container *ngIf="editandoId === temporada.id; else botonesAccion">
+      <button class="save-button" (click)="guardarEdicion(temporada)">
+        <span class="material-icons">save</span>
+      </button>
+      <button class="cancel-button" (click)="editandoId = null">
+        <span class="material-icons">cancel</span>
+      </button>
+    </ng-container>
+
+    <ng-template #botonesAccion>
+      <button class="edit-button" (click)="editandoId = temporada.id" title="Editar temporada">
+        <span class="material-icons">edit</span>
+      </button>
+      <button class="delete-button" title="Eliminar temporada" (click)="eliminarTemporada(temporada.id)">
+        <span class="material-icons">delete</span>
+      </button>
+    </ng-template>
+  </td>
+</tr>
+
+        <tr *ngIf="temporadas.length === 0 && !errorMessage">
+          <td colspan="5" class="no-data">No hay temporadas disponibles.</td>
+        </tr>
+        <tr *ngIf="errorMessage">
+          <td colspan="5" class="error">{{ errorMessage }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">© 2025 Mi Proyecto de Gestión de Temporadas</div>

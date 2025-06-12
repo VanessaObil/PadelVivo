@@ -1,0 +1,182 @@
+/* Global layout: asegura que el footer esté siempre abajo */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: #121242;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+/* Filtros */
+.filters {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.filter-group label {
+  font-weight: bold;
+  color: #121242;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Lista de Torneos/Temporadas */
+.torneos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 40px;
+  align-items: center;
+}
+
+/* Tarjeta */
+.torneo-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 1000px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.torneo-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Header dentro de la tarjeta */
+.torneo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.torneo-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #121242;
+}
+
+.torneo-status {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 5px;
+}
+
+/* Detalles */
+.torneo-details {
+  font-size: 1rem;
+  color: #555;
+}
+
+.torneo-location {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.torneo-dates {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #888;
+}
+
+/* No data / Error */
+.no-data {
+  color: #777;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.error {
+  color: #dc3545;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: #121242;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* 🔻 Responsive */
+@media (max-width: 768px) {
+  .torneos-lista {
+    padding: 10px 15px;
+  }
+
+  .torneo-card {
+    padding: 15px;
+  }
+
+  .torneo-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .torneo-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .torneo-status {
+    font-size: 0.85rem;
+  }
+
+  .torneo-details {
+    font-size: 0.95rem;
+  }
+
+  .torneo-location, .torneo-dates {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    display: none;
+  }
+}

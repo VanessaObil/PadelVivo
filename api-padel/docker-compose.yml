@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8443:8443"
+    networks:
+      - padelnet
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "443:443"
+    depends_on:
+      - backend
+    networks:
+      - padelnet
+
+networks:
+  padelnet:

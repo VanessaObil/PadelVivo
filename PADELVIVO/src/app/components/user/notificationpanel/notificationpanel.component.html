@@ -1,0 +1,12 @@
+<button (click)="togglePanel()">🔔 Notificaciones ({{ notifications.length }})</button>
+
+<div *ngIf="showPanel" class="notification-panel">
+  <h3>Notificaciones</h3>
+  <ul>
+    <li *ngFor="let n of notifications">
+      <strong>{{ n.subject }}</strong><br>
+      <span>{{ n.message }}</span><br>
+      <small>{{ n.createdAt | date:'short' }}</small>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,64 @@
+<div class="page-container">
+  <div class="header">
+    <h2>PARTIDOS FAVORITOS</h2>
+  </div>
+
+  <div class="partidos-lista">
+    <div *ngFor="let partido of favoritos" class="partido-card">
+      <div class="equipos">
+        <button (click)="eliminarFavorito(partido.partidoId)"
+                [attr.aria-label]="'Quitar favorito partido ' + partido.partidoId"
+                style="background:none; border:none; cursor:pointer;">
+          <span class="material-icons" style="color: gold;">
+            star
+          </span>
+        </button>
+
+        <div class="equipo">
+          <div class="jugador">
+            <img [src]="'https://flagsapi.com/' + partido.nacionalidades[0] + '/flat/64.png'"
+                 class="bandera" alt="Bandera Jugador 1">
+            <div class="nombre">{{ partido.jugadores[0] || 'Jugador 1' }}</div>
+          </div>
+          <div class="jugador">
+            <img [src]="'https://flagsapi.com/' + partido.nacionalidades[1] + '/flat/64.png'"
+                 class="bandera" alt="Bandera Jugador 2">
+            <div class="nombre">{{ partido.jugadores[1] || 'Jugador 2' }}</div>
+          </div>
+        </div>
+
+        <div class="score">
+          <div class="fecha">{{ partido.fechaPartido | date:'longDate' }}</div>
+          <div>Sets</div>
+          <div>{{ partido.marcadorActual?.split(', ')[0] || '0-0' }}</div>
+          <div>{{ partido.marcadorActual?.split(', ')[1] || '0-0' }}</div>
+          <div *ngIf="partido.marcadorActual?.split(', ').length > 2">{{ partido.marcadorActual.split(', ')[2] }}</div>
+        </div>
+
+        <div class="equipo">
+          <div class="jugador">
+            <img [src]="'https://flagsapi.com/' + partido.nacionalidades[2] + '/flat/64.png'"
+                 class="bandera" alt="Bandera Jugador 3">
+            <div class="nombre">{{ partido.jugadores[2] || 'Jugador 3' }}</div>
+          </div>
+          <div class="jugador">
+            <img [src]="'https://flagsapi.com/' + partido.nacionalidades[3] + '/flat/64.png'"
+                 class="bandera" alt="Bandera Jugador 4">
+            <div class="nombre">{{ partido.jugadores[3] || 'Jugador 4' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="favoritos.length === 0 && !errorMessage" class="no-data">
+      No tienes partidos favoritos aún.
+    </div>
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Mi Proyecto de Gestión de Torneos
+  </div>
+</div>

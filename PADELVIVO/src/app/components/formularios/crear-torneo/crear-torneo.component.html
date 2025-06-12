@@ -1,0 +1,88 @@
+<div class="main-login">
+  <div class="register-container">
+    <div class="register-box">
+      <h2>Crear Torneo</h2>
+
+      <form #form="ngForm" (ngSubmit)="crearTorneo()" novalidate>
+        <div class="form-columns">
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" name="name" [(ngModel)]="torneo.name" required #name="ngModel" placeholder="Nombre">
+              <div *ngIf="name.invalid && name.touched" class="error">El nombre es obligatorio</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="location">Ubicación</label>
+              <input type="text" name="location" [(ngModel)]="torneo.location" required #location="ngModel" placeholder="Ubicación">
+              <div *ngIf="location.invalid && location.touched" class="error">La ubicación es obligatoria</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="country">País</label>
+              <input type="text" name="country" [(ngModel)]="torneo.country" required #country="ngModel" placeholder="País">
+              <div *ngIf="country.invalid && country.touched" class="error">El país es obligatorio</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="level">Nivel</label>
+              <input type="text" name="level" [(ngModel)]="torneo.level" required #level="ngModel" placeholder="Nivel">
+              <div *ngIf="level.invalid && level.touched" class="error">El nivel es obligatorio</div>
+            </div>
+          </div>
+
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label for="status">Estado</label>
+              <input type="text" name="status" [(ngModel)]="torneo.status" required #status="ngModel" placeholder="Estado">
+              <div *ngIf="status.invalid && status.touched" class="error">El estado es obligatorio</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="startDate">Fecha de Inicio</label>
+              <input type="date" name="startDate" [(ngModel)]="torneo.startDate" required #startDate="ngModel">
+              <div *ngIf="startDate.invalid && startDate.touched" class="error">Fecha de inicio requerida</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="endDate">Fecha de Fin</label>
+              <input type="date" name="endDate" [(ngModel)]="torneo.endDate" required #endDate="ngModel">
+              <div *ngIf="endDate.invalid && endDate.touched" class="error">Fecha de fin requerida</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="temporadaId">Temporada</label>
+              <select name="temporadaId" [(ngModel)]="torneo.temporada.id" required #temporadaId="ngModel">
+                <option value="">Selecciona una temporada</option>
+                <option *ngFor="let temporada of temporadas" [value]="temporada.id">
+                  {{ temporada.name }} ({{ temporada.year }})
+                </option>
+              </select>
+              <div *ngIf="temporadaId.invalid && temporadaId.touched" class="error">Selecciona una temporada</div>
+            </div>
+          </div>
+        </div>
+
+
+        <button type="submit" [disabled]="form.invalid">Crear Torneo</button>
+
+
+        <div *ngIf="mensaje" class="success-message">{{ mensaje }}</div>
+        <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  © 2025 Mi Proyecto de Gestión de Torneos
+</div>

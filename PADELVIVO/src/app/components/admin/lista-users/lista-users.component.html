@@ -1,0 +1,116 @@
+<div class="header">
+  <h2>GESTIÓN DE USUARIOS</h2>
+  <!-- index.html -->
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+</div>
+
+<div class="administrador-gestion-torneos">
+  <div class="filters">
+    <button class="add-button" [routerLink]="'/admin/crear-user'">
+      Añadir Usuario
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table class="torneos-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Habilitado</th>
+          <th>Imagen</th>
+          <th>Creado</th>
+          <th>Modificado</th>
+          <th>Último cambio de contraseña</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <ng-container
+            *ngIf="editingUser && editingUser.id === user.id; else verFila"
+          >
+            <td><input type="text" [(ngModel)]="editingUser.username" /></td>
+            <td><input type="text" [(ngModel)]="editingUser.firstName" /></td>
+            <td><input type="text" [(ngModel)]="editingUser.lastName" /></td>
+            <td>
+              <select [(ngModel)]="editingUser.enabled">
+                <option [value]="true">Sí</option>
+                <option [value]="false">No</option>
+              </select>
+            </td>
+            <td>
+              <input
+                type="text"
+                [(ngModel)]="editingUser.image"
+                placeholder="URL imagen"
+              />
+            </td>
+
+            <td>{{ editingUser.createdDate | date : "short" }}</td>
+            <td>{{ editingUser.lastModifiedDate | date : "short" }}</td>
+            <td>{{ editingUser.lastPasswordChangeDate | date : "short" }}</td>
+            <td>
+
+              <button
+                (click)="guardarCambios()"
+                class="save-button"
+                title="Guardar"
+              >
+                <span class="material-icons">save</span>
+              </button>
+              <button
+                (click)="cancelarEdicion()"
+                class="cancel-button"
+                title="Cancelar"
+              >
+                <span class="material-icons">cancel</span>
+              </button>
+            </td>
+          </ng-container>
+          <ng-template #verFila>
+            <td>{{ user.username }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.enabled ? "Sí" : "No" }}</td>
+            <td>
+              <img
+                *ngIf="user.image"
+                [src]="user.image"
+                alt="Imagen"
+                width="40"
+              />
+            </td>
+            <td>{{ user.createdDate | date: 'short' }}</td>
+<td>{{ user.lastModifiedDate | date: 'short' }}</td>
+<td>{{ user.lastPasswordChangeDate | date: 'short' }}</td>
+
+            <td>
+              <button (click)="onEditUser(user)" title="Editar">
+                <span class="material-icons">edit</span>
+              </button>
+
+              <!-- Eliminar usuario -->
+              <button (click)="onDeleteUser(user)" title="Eliminar">
+                <span class="material-icons">delete</span>
+              </button>
+            </td>
+          </ng-template>
+        </tr>
+
+        <tr *ngIf="users.length === 0 && !mensajeError">
+          <td colspan="6">No hay usuarios disponibles.</td>
+        </tr>
+        <tr *ngIf="mensajeError">
+          <td colspan="6" class="error">{{ mensajeError }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">© 2025 Mi Proyecto de Gestión de Usuarios</div>

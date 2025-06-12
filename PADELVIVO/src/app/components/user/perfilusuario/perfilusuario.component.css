@@ -1,0 +1,173 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales */
+body, html {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f2f2f2;
+  height: 100%;
+  color: #333;
+}
+
+/* Contenedor principal */
+.main-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); /* Espacio para footer */
+  padding: 20px;
+}
+
+/* Contenedor del perfil */
+.profile-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* Caja de perfil */
+.profile-card {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Título */
+.profile-card h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: #007bff;
+  text-transform: uppercase;
+}
+
+/* Columnas */
+.info-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.info-column {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Grupos de info */
+.info-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.value {
+  width: 100%;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+}
+
+/* Acciones */
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.button-action {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button-action:hover {
+  opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+  background-color: #121242;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ----------- RESPONSIVE ----------- */
+@media (max-width: 768px) {
+  .main-profile {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .profile-card {
+    padding: 25px;
+  }
+
+  .profile-card h2 {
+    font-size: 28px;
+  }
+
+  .info-columns {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .info-column {
+    min-width: 100%;
+  }
+
+  .value {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .button-action {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

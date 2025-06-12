@@ -1,0 +1,70 @@
+<main class="main-profile" *ngIf="usuario">
+  <div class="profile-container">
+    <div class="profile-card">
+      <h2>Perfil de Usuario</h2>
+
+      <div class="info-columns">
+        <div class="info-column">
+
+         <div class="info-group">
+  <label>Correo electrónico</label>
+  <div class="value" *ngIf="!editando">{{ usuario.username || 'No disponible' }}</div>
+  <input *ngIf="editando" [(ngModel)]="usuario.username" />
+</div>
+
+          <div class="info-group">
+            <label>Nombre</label>
+            <div class="value" *ngIf="!editando">{{ usuario.firstName || 'No disponible' }}</div>
+            <input *ngIf="editando" [(ngModel)]="usuario.firstName" />
+          </div>
+
+          <div class="info-group">
+            <label>Apellido</label>
+            <div class="value" *ngIf="!editando">{{ usuario.lastName || 'No disponible' }}</div>
+            <input *ngIf="editando" [(ngModel)]="usuario.lastName" />
+          </div>
+
+          <div class="info-group">
+            <label>Contraseña</label>
+            <div class="value" *ngIf="!editando">********</div>
+            <input *ngIf="editando" type="password" [(ngModel)]="usuario.password" />
+          </div>
+
+          <div class="info-group" *ngIf="usuario.image">
+            <label>Imagen de perfil</label>
+            <img [src]="usuario.image" alt="Imagen de perfil" width="150" />
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button *ngIf="!editando" class="button-action edit-button" (click)="editando = true">
+          Editar
+        </button>
+
+        <div *ngIf="editando">
+          <button class="button-action save-button" (click)="guardarCambios()">
+            Guardar
+          </button>
+          <button class="button-action cancel-button" (click)="cancelarEdicion()">
+            Cancelar
+          </button>
+        </div>
+
+        <button class="button-action delete-button" (click)="goBack()">
+          Volver
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+<div class="footer">
+    © 2025 Mi Proyecto de Gestión de Usuarios
+  </div>

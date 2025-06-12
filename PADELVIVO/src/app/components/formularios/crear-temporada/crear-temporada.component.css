@@ -1,0 +1,193 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales */
+html, body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f2f2f2;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor principal */
+.main-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+/* Contenedor del formulario */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Caja del formulario */
+.register-box {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+/* Estilo del título */
+.register-box h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: #007bff;
+}
+
+/* Formulario */
+.register-box form {
+  width: 100%;
+}
+
+/* Columnas */
+.form-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Columna individual */
+.form-column {
+  flex: 1;
+  min-width: 250px;
+  box-sizing: border-box;
+}
+
+/* Grupo de campos */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Etiquetas */
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Inputs y selects */
+.form-group input,
+.form-group select {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+}
+
+/* Mensaje de error */
+.error {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Botón de envío */
+button[type="submit"] {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="submit"]:disabled {
+  background-color: #a0bffb;
+  cursor: not-allowed;
+}
+
+/* Mensajes */
+.success-message {
+  color: #28a745;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+/* Footer */
+.footer {
+  background-color: #121242;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+/* Media query: para dispositivos móviles */
+@media (max-width: 768px) {
+  .form-columns {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-column {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .register-box {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .register-box h2 {
+    font-size: 28px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

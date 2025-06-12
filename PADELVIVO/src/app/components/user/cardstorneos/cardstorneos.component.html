@@ -1,0 +1,59 @@
+<!-- Header para Torneos -->
+<div class="header">
+  <h2>TORNEOS</h2>
+</div>
+
+
+<div class="filters">
+  <div class="filter-group">
+    <label for="fecha">Fecha:</label>
+    <input
+      type="date"
+      id="fecha"
+      [(ngModel)]="fechaSeleccionada"
+      class="date-input"
+      (change)="aplicarFiltroFecha()" />
+  </div>
+
+  <div class="filter-group">
+    <label for="estado-select">Estado:</label>
+    <select id="estado-select"
+            [(ngModel)]="estadoSeleccionado"
+            class="date-input"
+            (change)="filtrarPorEstado(estadoSeleccionado)">
+      <option value="todos">Todos</option>
+      <option value="finished">Finalizados</option>
+      <option value="pending">Por jugar</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="torneos-lista">
+  <div *ngFor="let torneo of torneosFiltrados" class="torneo-card">
+    <div class="torneo-header">
+      <h3>{{ torneo.name || 'Torneo sin nombre' }}</h3>
+      <span class="torneo-status">{{ torneo.status || 'Estado desconocido' }}</span>
+    </div>
+    <div class="torneo-details">
+      <div class="torneo-location">{{ torneo.location || 'Ubicación no especificada' }}</div>
+      <div class="torneo-dates">
+        <span>Fecha Inicio: {{ torneo.startDate | date:'longDate' }}</span><br>
+        <span>Fecha Fin: {{ torneo.endDate | date:'longDate' }}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="torneosFiltrados.length === 0 && !errorMessage" class="no-data">
+    No hay torneos disponibles.
+  </div>
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  © 2025 Mi Proyecto de Gestión de Torneos
+</div>

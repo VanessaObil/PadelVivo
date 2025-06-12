@@ -1,0 +1,34 @@
+<!-- Header para Temporadas -->
+<div class="header">
+  <h2>TEMPORADAS</h2>
+</div>
+
+
+<div class="torneos-lista">
+  <div *ngFor="let temporada of temporadas" class="torneo-card">
+    <div class="torneo-header">
+      <h3>{{ temporada.name || 'Temporada sin nombre' }}</h3>
+      <span class="torneo-status">Año: {{ temporada.year || 'No especificado' }}</span>
+    </div>
+    <div class="torneo-details">
+      <div class="torneo-location">Temporada número: {{ temporada.id }}</div>
+      <div class="torneo-dates">
+        <span><strong>Inicio:</strong> {{ temporada.startDate | date:'longDate' }}</span><br />
+        <span><strong>Fin:</strong> {{ temporada.endDate | date:'longDate' }}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="temporadas.length === 0 && !errorMessage" class="no-data">
+    No hay temporadas disponibles.
+  </div>
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  © 2025 Mi Proyecto de Gestión de Torneos
+</div>

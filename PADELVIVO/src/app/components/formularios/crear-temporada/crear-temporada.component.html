@@ -1,0 +1,56 @@
+<div class="main-login">
+  <div class="register-container">
+    <div class="register-box">
+      <h2>Crear Temporada</h2>
+
+      <form #form="ngForm" (ngSubmit)="crearTemporada()" novalidate>
+        <div class="form-columns">
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" name="name" [(ngModel)]="nuevaTemporada.name" required #name="ngModel" placeholder="Nombre">
+              <div *ngIf="name.invalid && name.touched" class="error">El nombre es obligatorio</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="startDate">Fecha de Inicio</label>
+              <input type="date" name="startDate" [(ngModel)]="nuevaTemporada.startDate" required #startDate="ngModel">
+              <div *ngIf="startDate.invalid && startDate.touched" class="error">Fecha de inicio requerida</div>
+            </div>
+          </div>
+
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label for="endDate">Fecha de Fin</label>
+              <input type="date" name="endDate" [(ngModel)]="nuevaTemporada.endDate" required #endDate="ngModel">
+              <div *ngIf="endDate.invalid && endDate.touched" class="error">Fecha de fin requerida</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="year">Año</label>
+              <input type="number" name="year" [(ngModel)]="nuevaTemporada.year" required #year="ngModel" placeholder="Año">
+              <div *ngIf="year.invalid && year.touched" class="error">El año es obligatorio</div>
+            </div>
+          </div>
+        </div>
+
+
+        <button type="submit" [disabled]="form.invalid">Crear Temporada</button>
+
+
+        <div *ngIf="mensaje" class="success-message">{{ mensaje }}</div>
+        <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  © 2025 Mi Proyecto de Gestión de Temporadas
+</div>

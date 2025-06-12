@@ -1,0 +1,13 @@
+.notification-panel {
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 1em;
+  z-index: 1000;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  max-height: 400px;
+  overflow-y: auto;
+}

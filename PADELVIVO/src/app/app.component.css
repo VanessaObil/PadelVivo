@@ -1,0 +1,237 @@
+/* LOGO */
+.logo {
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* NAVBARS BASE */
+.anonymous-navbar, .admin-navbar, .user-navbar {
+  background-color: #121242;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* NAV LINKS */
+.anonymous-navbar ul, .admin-navbar ul, .user-navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.anonymous-navbar a,
+.admin-navbar a,
+.user-navbar a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.anonymous-navbar a:hover,
+.admin-navbar a:hover,
+.user-navbar a:hover {
+  color: #337eff;
+}
+
+.anonymous-navbar a.active,
+.admin-navbar a.active,
+.user-navbar a.active {
+  color: #337eff;
+  border-bottom: 2px solid #337eff;
+  padding-bottom: 5px;
+}
+
+/* BUTTONS */
+.login-button,
+.logout-button,
+.back-button {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: white;
+  margin: 5px;
+}
+
+.login-button:hover {
+  background-color: #0069d9;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 20px;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.back-button {
+  background-color: #337eff;
+  color: white;
+  margin-left: 20px;
+}
+
+.back-button:hover {
+  background-color: #2e71e6;
+}
+
+/* MENU TOGGLE (☰) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .anonymous-navbar,
+  .admin-navbar,
+  .user-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .anonymous-navbar ul,
+  .admin-navbar ul,
+  .user-navbar ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin-top: 10px;
+    display: none; /* oculto por defecto */
+  }
+
+  .anonymous-navbar ul.menu-open,
+  .admin-navbar ul.menu-open,
+  .user-navbar ul.menu-open {
+    display: flex; /* visible cuando se abre */
+  }
+
+  .login-button,
+  .logout-button,
+  .back-button {
+    width: 100%;
+  }
+
+  .anonymous-navbar > div,
+  .user-navbar > div,
+  .admin-navbar > div {
+    width: 100%;
+  }
+}
+.navbar-title-mobile {
+  display: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .navbar-title-mobile {
+    display: block;
+  }
+
+  .header {
+    display: none;
+  }
+}
+.navbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.navbar-title-mobile {
+  font-size: 1.3rem;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  color: #333;
+}
+
+.menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.navbar-title-mobile {
+  background-color: #121242;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+.notification-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.notifications-panel {
+  position: absolute;
+  right: 0;
+  top: 25px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 250px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.notifications-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notifications-panel li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.material-symbols-outlined{
+  color: white;
+}

@@ -1,0 +1,40 @@
+<main class="main-login">
+  <div class="register-container">
+    <div class="register-box">
+      <h2>REGISTRO</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Correo electrónico <span>*</span></label>
+          <input type="text" formControlName="username" />
+        </div>
+        <div class="form-group">
+          <label>Contraseña <span>*</span></label>
+          <input type="password" formControlName="password" />
+        </div>
+        <div class="form-group">
+          <label>Nombre <span>*</span> </label>
+          <input type="text" formControlName="firstName" />
+        </div>
+        <div class="form-group">
+          <label>Apellido <span>*</span></label>
+          <input type="text" formControlName="lastName" />
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid">
+          Registrarse
+        </button>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div *ngIf="successMessage" class="success-message">
+          {{ successMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="login-side">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <img src="assets/logo-letras.png" alt="Logo-letras" class="logo-letras" />
+    <p>La forma más fácil de registrar y seguir tus partidos.</p>
+  </div>
+</main>
+
+<footer class="footer">© 2023 Derechos reservados</footer>

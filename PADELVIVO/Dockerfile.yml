@@ -1,0 +1,10 @@
+# frontend/Dockerfile
+
+FROM nginx:alpine
+
+# Copia el contenido de la carpeta dist/padelvivo al directorio donde nginx sirve contenido
+COPY dist/padelvivo /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

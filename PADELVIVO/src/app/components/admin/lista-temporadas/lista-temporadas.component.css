@@ -1,0 +1,260 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body y HTML full height */
+body, html {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f5f5f5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background-color: #121242;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: #121242;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: auto; /* Empuja el footer al final */
+  width: 100%;
+  position: relative;
+}
+
+/* Contenedor principal */
+.administrador-gestion-temporadas {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+}
+
+/* Contenedor tabla y scroll horizontal */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  min-width: 600px; /* Para permitir scroll en móvil */
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #121242;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Mensajes no data o error */
+.no-data,
+.error {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+.error {
+  color: #dc3545;
+  background-color: #fdecea;
+  border: 1px solid #dc3545;
+  border-radius: 10px;
+}
+
+/* Botones acciones */
+.actions button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.actions button:hover {
+  color: #337eff;
+}
+
+.edit-button:hover {
+  color: #ffc107;
+}
+
+.delete-button:hover {
+  color: #dc3545;
+}
+
+.save-button {
+  color: #28a745;
+}
+
+.save-button:hover {
+  color: #218838;
+}
+
+.cancel-button {
+  color: #dc3545;
+}
+
+.cancel-button:hover {
+  color: #a71d2a;
+}
+
+/* Botón añadir */
+.add-button {
+  background-color: #337eff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-button:hover {
+  background-color: #0056d2;
+}
+
+/* Filtros */
+.filters {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  flex: 1 1 150px;
+}
+
+.filter-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #121242;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* Responsive para tablets y móviles */
+@media (max-width: 1024px) {
+  .administrador-gestion-temporadas {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .filters {
+    gap: 15px;
+  }
+
+  .add-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    display: none;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+
+  .add-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  th, td {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+
+  .actions button {
+    font-size: 18px;
+    margin: 0 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  th, td {
+    padding: 8px 5px;
+    font-size: 0.75rem;
+  }
+
+  .add-button {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}

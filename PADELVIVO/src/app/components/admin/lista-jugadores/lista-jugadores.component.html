@@ -1,0 +1,111 @@
+<div class="header">
+  <h2>GESTIÓN DE JUGADORES</h2>
+</div>
+
+<div class="administrador-gestion-jugadores">
+  <div class="filters">
+    <div class="filter-group">
+      <label for="nombre">Nombre Jugador</label>
+      <select id="nombre">
+        <option value="">Placeholder</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="estado">Estado</label>
+      <select id="estado">
+        <option value="">Placeholder</option>
+      </select>
+    </div>
+    <button class="add-button" [routerLink]="'/admin/crear-jugador'">
+      Añadir Jugador
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table class="jugadores-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Ranking</th>
+          <th>Puntos</th>
+          <th>Altura</th>
+          <th>Nacionalidad</th>
+          <th>Lugar de nacimiento</th>
+          <th>Fecha de nacimiento</th>
+          <th>Valor mercado</th>
+          <th>Mano</th>
+          <th>Lado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jugador of jugadores">
+  <td>{{ jugador.id }}</td>
+
+  <td *ngIf="!jugador.editing">{{ jugador.name }}</td>
+  <td *ngIf="jugador.editing">
+    <input [(ngModel)]="jugador.name" />
+  </td>
+
+  <td>{{ jugador.ranking || 'N/A' }}</td>
+
+  <td *ngIf="!jugador.editing">{{ jugador.points }}</td>
+  <td *ngIf="jugador.editing">
+    <input type="number" [(ngModel)]="jugador.points" />
+  </td>
+
+  <td *ngIf="!jugador.editing">{{ jugador.height }}</td>
+  <td *ngIf="jugador.editing">
+    <input type="number" [(ngModel)]="jugador.height" />
+  </td>
+
+  <td>{{ jugador.nationality }}</td>
+  <td>{{ jugador.birthplace || 'N/A' }}</td>
+
+  <td *ngIf="!jugador.editing">
+    {{ jugador.birthdate ? (jugador.birthdate | date: 'yyyy-MM-dd') : 'N/A' }}
+  </td>
+  <td *ngIf="jugador.editing">
+    <input type="date" [(ngModel)]="jugador.birthdate" />
+  </td>
+
+  <td>{{ jugador.marketValue || 'N/A' }}</td>
+
+  <td *ngIf="!jugador.editing">{{ jugador.hand }}</td>
+  <td *ngIf="jugador.editing">
+    <input [(ngModel)]="jugador.hand" />
+  </td>
+
+  <td *ngIf="!jugador.editing">{{ jugador.side }}</td>
+  <td *ngIf="jugador.editing">
+    <input [(ngModel)]="jugador.side" />
+  </td>
+
+  <td class="actions">
+    <button *ngIf="!jugador.editing" class="edit-button" (click)="editarJugador(jugador)">
+      <span class="material-icons">edit</span>
+    </button>
+    <button *ngIf="jugador.editing" class="save-button" (click)="guardarJugador(jugador)">
+      <span class="material-icons">save</span>
+    </button>
+    <button class="delete-button" (click)="eliminarJugadores(jugador.id)">
+      <span class="material-icons">delete</span>
+    </button>
+  </td>
+</tr>
+
+        <tr *ngIf="jugadores.length === 0 && !errorMessage" class="no-data">
+          <td colspan="13">No hay jugadores disponibles.</td>
+        </tr>
+        <tr *ngIf="errorMessage">
+          <td colspan="13" class="error">{{ errorMessage }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  © 2025 Mi Proyecto de Gestión de Jugadores
+</div>

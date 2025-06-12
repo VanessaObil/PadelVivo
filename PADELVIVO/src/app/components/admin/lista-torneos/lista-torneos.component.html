@@ -1,0 +1,87 @@
+<div class="header">
+  <h2>GESTIÓN DE TORNEOS</h2>
+</div>
+
+<div class="administrador-gestion-torneos">
+  <div class="filters">
+    <div class="filter-group">
+      <label for="temporada">Temporada</label>
+      <select id="temporada">
+        <option value="">Seleccionar Temporada</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="nombreTorneo">Nombre del Torneo</label>
+      <select id="nombreTorneo">
+        <option value="">Seleccionar Torneo</option>
+      </select>
+    </div>
+
+    <button class="add-button" [routerLink]="'/admin/crear-torneo'">
+      Añadir Torneo
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table class="torneos-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
+          <th>Temporada</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let torneo of torneos">
+  <ng-container *ngIf="modoEdicion && torneoEditado.id === torneo.id; else mostrarFila">
+    <td><input [(ngModel)]="torneoEditado.name" /></td>
+    <td><input [(ngModel)]="torneoEditado.location" /></td>
+    <td><input type="date" [(ngModel)]="torneoEditado.startDate" /></td>
+    <td><input type="date" [(ngModel)]="torneoEditado.endDate" /></td>
+    <td>{{ torneo.temporada?.name }}</td>
+    <td class="actions">
+      <button (click)="guardarCambios()" class="save-button" title="Guardar cambios">
+        <span class="material-icons">save</span>
+      </button>
+      <button (click)="cancelarEdicion()" class="cancel-button" title="Cancelar">
+        <span class="material-icons">cancel</span>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-template #mostrarFila>
+    <td>{{ torneo.name }}</td>
+    <td>{{ torneo.location }}</td>
+    <td>{{ torneo.startDate | date }}</td>
+    <td>{{ torneo.endDate | date }}</td>
+    <td>{{ torneo.temporada?.name }}</td>
+    <td class="actions">
+      <button class="edit-button" title="Editar torneo" (click)="editarTorneo(torneo)">
+        <span class="material-icons">edit</span>
+      </button>
+      <button
+        class="delete-button"
+        title="Eliminar torneo"
+        (click)="eliminarTorneo(torneo.id)"
+      >
+        <span class="material-icons">delete</span>
+      </button>
+    </td>
+  </ng-template>
+</tr>
+
+        <tr *ngIf="torneos.length === 0 && !errorMessage">
+          <td colspan="6" class="no-data">No hay torneos disponibles.</td>
+        </tr>
+        <tr *ngIf="errorMessage">
+          <td colspan="6" class="error">{{ errorMessage }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">© 2025 Mi Proyecto de Gestión de Torneos</div>

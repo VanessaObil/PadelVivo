@@ -1,0 +1,84 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+<!-- ANONYMOUS NAVBAR -->
+<nav *ngIf="!isLoggedIn" class="anonymous-navbar">
+  <div class="navbar-header">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <div class="navbar-title-mobile" *ngIf="isMobile && currentTitle">{{ currentTitle }}</div>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </div>
+
+  <ul [ngClass]="{ 'menu-open': isMenuOpen }">
+    <li><a routerLink="/torneos" routerLinkActive="active" (click)="toggleMenu()">Torneos</a></li>
+    <li><a routerLink="/temporadas" routerLinkActive="active" (click)="toggleMenu()">Temporadas</a></li>
+    <li><a routerLink="/partidos" routerLinkActive="active" (click)="toggleMenu()">Partidos</a></li>
+    <li><a routerLink="/login" (click)="toggleMenu()"><button class="login-button">Iniciar Sesión</button></a></li>
+    <li><a routerLink="/register" (click)="toggleMenu()"><button class="login-button">Registrarse</button></a></li>
+  </ul>
+</nav>
+
+<!-- ADMIN NAVBAR -->
+<nav *ngIf="isAdminLoggedIn" class="admin-navbar">
+  <div class="navbar-header">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <div class="navbar-title-mobile" *ngIf="isMobile && currentTitle">{{ currentTitle }}</div>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </div>
+
+  <ul [ngClass]="{ 'menu-open': isMenuOpen }">
+    <li><a routerLink="/admin/jugadores" routerLinkActive="active" (click)="toggleMenu()">Jugadores</a></li>
+    <li><a routerLink="/admin/partidos" routerLinkActive="active" (click)="toggleMenu()">Partidos</a></li>
+    <li><a routerLink="/admin/torneos" routerLinkActive="active" (click)="toggleMenu()">Torneos</a></li>
+    <li><a routerLink="/admin/temporadas" routerLinkActive="active" (click)="toggleMenu()">Temporadas</a></li>
+    <!--  <li><a routerLink="/admin/actualizaciones" routerLinkActive="active" (click)="toggleMenu()">Actualizaciones</a></li>-->
+    <li><a routerLink="/admin/users" routerLinkActive="active" (click)="toggleMenu()">Usuarios</a></li>
+    <li><button (click)="logout(); toggleMenu()" class="logout-button">Cerrar Sesión</button></li>
+  </ul>
+</nav>
+
+<!-- USER NAVBAR -->
+<nav *ngIf="isUserLoggedIn" class="user-navbar">
+  <div class="navbar-header">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <div class="navbar-title-mobile" *ngIf="isMobile && currentTitle">{{ currentTitle }}</div>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </div>
+
+  <ul [ngClass]="{ 'menu-open': isMenuOpen }">
+    <li><a routerLink="/torneos" routerLinkActive="active" (click)="toggleMenu()">Torneos</a></li>
+    <li><a routerLink="/temporadas" routerLinkActive="active" (click)="toggleMenu()">Temporadas</a></li>
+    <li><a routerLink="/partidos" routerLinkActive="active" (click)="toggleMenu()">Partidos</a></li>
+    <li><a routerLink="/user/favoritos" routerLinkActive="active" (click)="toggleMenu()">Favoritos</a></li>
+    <li><a routerLink="/user/perfil" routerLinkActive="active" (click)="toggleMenu()">Perfil</a></li>
+    <li>
+
+      <!-- Icono de campana con clic -->
+<div class="notification-container">
+  <span class="material-symbols-outlined" (click)="toggleNotifications()">
+    notifications
+  </span>
+
+  <!-- Ventanita emergente -->
+  <div class="notifications-panel" *ngIf="showNotifications">
+    <p><strong>Notificaciones</strong></p>
+    <ul>
+      <li>🎾 Partido confirmado el sábado</li>
+      <li>🏆 Nuevo torneo disponible</li>
+      <li>📣 Actualización en reglas de temporada</li>
+    </ul>
+  </div>
+</div>
+  <button (click)="logout(); toggleMenu()" class="logout-button">
+    <span class="material-symbols-outlined">logout</span>
+  </button>
+</li>
+  </ul>
+  <!-- en navbar.component.html o app.component.html -->
+
+
+
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,185 @@
+<div class="main-login">
+  <div class="register-container">
+    <div class="register-box">
+      <h2>Crear Jugador</h2>
+
+      <form #form="ngForm" (ngSubmit)="crearJugador()" novalidate>
+        <div class="form-columns">
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input
+                type="text"
+                name="name"
+                [(ngModel)]="nuevoJugador.name"
+                required
+                #name="ngModel"
+                placeholder="Nombre completo"
+              />
+              <div *ngIf="name.invalid && name.touched" class="error">
+                El nombre es obligatorio
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="ranking">Ranking</label>
+              <input
+                type="number"
+                name="ranking"
+                [(ngModel)]="nuevoJugador.ranking"
+                #ranking="ngModel"
+                placeholder="Ranking"
+              />
+            </div>
+
+
+            <div class="form-group">
+              <label for="points">Puntos</label>
+              <input
+                type="number"
+                name="points"
+                [(ngModel)]="nuevoJugador.points"
+                required
+                #points="ngModel"
+                placeholder="Puntos"
+              />
+              <div *ngIf="points.invalid && points.touched" class="error">
+                Los puntos son obligatorios
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="height">Altura (cm)</label>
+              <input
+                type="number"
+                name="height"
+                [(ngModel)]="nuevoJugador.height"
+                required
+                #height="ngModel"
+                placeholder="Ej: 185"
+              />
+              <div *ngIf="height.invalid && height.touched" class="error">
+                La altura es obligatoria
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="hand">Mano hábil</label>
+              <select
+                name="hand"
+                [(ngModel)]="nuevoJugador.hand"
+                required
+                #hand="ngModel"
+              >
+                <option value="">Seleccione una opción</option>
+                <option value="left">Izquierda</option>
+                <option value="right">Derecha</option>
+              </select>
+              <div *ngIf="hand.invalid && hand.touched" class="error">
+                Seleccione la mano hábil
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-column">
+            <!-- Lado preferido -->
+            <div class="form-group">
+              <label for="side">Lado preferido</label>
+              <select
+                name="side"
+                [(ngModel)]="nuevoJugador.side"
+                required
+                #side="ngModel"
+              >
+                <option value="">Seleccione una opción</option>
+                <option value="drive">Drive</option>
+                <option value="backhand">Backhand</option>
+              </select>
+              <div *ngIf="side.invalid && side.touched" class="error">
+                Seleccione el lado preferido
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="nationality">Nacionalidad</label>
+              <input
+                type="text"
+                name="nationality"
+                [(ngModel)]="nuevoJugador.nationality"
+                required
+                #nationality="ngModel"
+                placeholder="Ej: ES, AR, IT"
+              />
+              <div *ngIf="nationality.invalid && nationality.touched" class="error">
+                La nacionalidad es obligatoria
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="birthplace">Lugar de nacimiento</label>
+              <input
+                type="text"
+                name="birthplace"
+                [(ngModel)]="nuevoJugador.birthplace"
+                required
+                #birthplace="ngModel"
+                placeholder="Ciudad, País"
+              />
+              <div *ngIf="birthplace.invalid && birthplace.touched" class="error">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="birthdate">Fecha de nacimiento</label>
+              <input
+                type="date"
+                name="birthdate"
+                [(ngModel)]="nuevoJugador.birthdate"
+                required
+                #birthdate="ngModel"
+              />
+              <div *ngIf="birthdate.invalid && birthdate.touched" class="error">
+                La fecha es obligatoria
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="marketValue">Valor de mercado</label>
+              <input
+                type="text"
+                name="marketValue"
+                [(ngModel)]="nuevoJugador.marketValue"
+                required
+                #marketValue="ngModel"
+                placeholder="Ej: $500K, $1M"
+              />
+              <div *ngIf="marketValue.invalid && marketValue.touched" class="error">
+                Este campo es obligatorio
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <button type="submit" [disabled]="form.invalid">Crear Jugador</button>
+
+
+        <div *ngIf="mensaje" class="success-message">{{ mensaje }}</div>
+        <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2025 Mi Proyecto de Gestión de Jugadores</div>

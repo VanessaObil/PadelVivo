@@ -1,0 +1,134 @@
+<!-- Incluye Material Icons en el <head> de tu index.html -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="header">
+  <h2>GESTIÓN DE PARTIDOS</h2>
+</div>
+
+<div class="administrador-gestion-partidos">
+
+  <!-- Filtros (placeholder) -->
+  <div class="filters">
+    <div class="filter-group">
+      <label for="fecha">Fecha</label>
+      <select id="fecha">
+        <option value="">Placeholder</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="estado">Estado</label>
+      <select id="estado">
+        <option value="">Placeholder</option>
+      </select>
+    </div>
+    <button class="add-button" [routerLink]="'/admin/crear-partido'">
+      Añadir Partido
+    </button>
+  </div>
+
+  <!-- Tabla de Partidos -->
+  <div class="table-container">
+    <table class="partidos-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Jugadores</th>
+          <th>Marcador</th>
+          <th>Estado</th>
+          <th>Sets</th>
+          <th>Puntos</th>
+          <th>Nacionalidades</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let partido of partidos">
+          <td *ngIf="editandoId !== partido.partidoId">
+            {{ partido.partidoId }}
+          </td>
+
+          <!-- FECHA -->
+          <td *ngIf="editandoId !== partido.partidoId">
+            {{ partido.fechaPartido | date:'yyyy-MM-dd' }}
+          </td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <input type="date" [(ngModel)]="partido.fechaPartido" />
+          </td>
+
+          <!-- JUGADORES -->
+          <td *ngIf="editandoId !== partido.partidoId">
+            <ng-container *ngIf="partido.jugadores?.length >= 4">
+              {{ partido.jugadores[0] }}, {{ partido.jugadores[1] }} <br> VS <br> {{ partido.jugadores[2] }}, {{ partido.jugadores[3] }}
+            </ng-container>
+            <ng-container *ngIf="!partido.jugadores || partido.jugadores.length === 0">
+              N/A
+            </ng-container>
+          </td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <input type="text" [(ngModel)]="partido.jugadoresString" placeholder="Jugador A, Jugador B, Jugador C, Jugador D" />
+          </td>
+
+          <!-- MARCADOR -->
+          <td *ngIf="editandoId !== partido.partidoId">{{ partido.marcadorActual || 'N/A' }}</td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <input type="text" [(ngModel)]="partido.marcadorActual" />
+          </td>
+
+          <!-- ESTADO -->
+          <td *ngIf="editandoId !== partido.partidoId">{{ partido.estado || 'N/A' }}</td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <select [(ngModel)]="partido.estado">
+              <option value="Pending">Pendiente</option>
+
+              <option value="Finished">Finalizado</option>
+            </select>
+          </td>
+
+          <!-- SETS -->
+          <td *ngIf="editandoId !== partido.partidoId">{{ partido.sets || 'N/A' }}</td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <input type="text" [(ngModel)]="partido.sets" placeholder="Ej: 6-4, 7-5" />
+          </td>
+
+          <!-- PUNTOS -->
+          <td *ngIf="editandoId !== partido.partidoId">{{ partido.puntos || 'N/A' }}</td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <input type="text" [(ngModel)]="partido.puntos" placeholder="Ej: 15-30, 40-40" />
+          </td>
+
+          <!-- NACIONALIDADES -->
+          <td *ngIf="editandoId !== partido.partidoId">
+            {{ partido.nacionalidades?.join(', ') || 'N/A' }}
+          </td>
+          <td *ngIf="editandoId === partido.partidoId">
+            <input type="text" [(ngModel)]="partido.nacionalidadesString" placeholder="Ej: ES, AR, AR, ES" />
+          </td>
+
+          <!-- ACCIONES -->
+          <td class="actions">
+            <ng-container *ngIf="editandoId !== partido.partidoId">
+              <button class="edit-button" (click)="editarPartido(partido)" title="Editar">
+                <span class="material-icons">edit</span>
+              </button>
+              <button class="delete-button" (click)="eliminarPartido(partido.partidoId)" title="Eliminar">
+                <span class="material-icons">delete</span>
+              </button>
+            </ng-container>
+            <ng-container *ngIf="editandoId === partido.partidoId">
+              <button class="save-button" (click)="guardarEdicion(partido)" title="Guardar">
+                <span class="material-icons">check</span>
+              </button>
+              <button class="cancel-button" (click)="cancelarEdicion()" title="Cancelar">
+                <span class="material-icons">close</span>
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  © 2025 Mi Proyecto de Gestión de Torneos
+</div>
