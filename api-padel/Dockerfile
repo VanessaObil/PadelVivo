@@ -1,5 +1,6 @@
 # Etapa 1: construir con Maven
-FROM maven:3.9.3-eclipse-temurin-21 AS build
+FROM maven:3.9.3-openjdk-21 AS build
+
 WORKDIR /app
 
 # Copia archivos de pom y código fuente
