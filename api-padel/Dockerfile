@@ -3,20 +3,17 @@ FROM maven:3.9.8-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-# Copiar certs/, pom.xml y src/
 COPY certs/ certs/
 COPY pom.xml .
 COPY src ./src
 
-# Construir el proyecto
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagen final ligera para ejecutar el JAR
+# Etapa 2: Imagen final
 FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
-# Copiar JAR y certs/
 COPY --from=build /app/target/api-padel-0.0.1-SNAPSHOT.jar app.jar
 COPY --from=build /app/certs /app/certs
 
