@@ -1,22 +1,25 @@
-# Etapa 1: Construcción de la aplicación Angular
+# Etapa 1: Build Angular app
 FROM node:18 AS build
+
 WORKDIR /app
 
-# Copiar solo los archivos necesarios para instalar dependencias
+# Instala dependencias
 COPY package*.json ./
-RUN npm install
-
-# Copiar todo el código fuente
+COPY angular.json ./
+COPY tsconfig*.json ./
 COPY . .
-RUN npm run build -- --prod
 
-# Construir la aplicación (modo producción)
-RUN npm run build --prod
+RUN npm install
+RUN npm run build -- --configuration production
 
 # Etapa 2: Servir con Nginx
 FROM nginx:alpine
 
-# Copiar archivos compilados desde la etapa de build
+# Copia archivos compilados
 COPY --from=build /app/dist/padelvivo /usr/share/nginx/html
+
+# Exponer puerto
 EXPOSE 80
+
+# Arranca Nginx
 CMD ["nginx", "-g", "daemon off;"]
