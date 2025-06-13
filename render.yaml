@@ -1,5 +1,3 @@
-# render.yaml
-
 services:
   - type: web
     name: padelvivo-backend
@@ -10,23 +8,23 @@ services:
     plan: free
     dockerfilePath: ./api-padel/Dockerfile
     envVars:
+      - key: PORT
+        value: "8080"
       - key: DB_URL
         value: jdbc:mariadb://mariadb:3308/PadelVivo
       - key: DB_USERNAME
         value: root
       - key: DB_PASSWORD
         value: rootroot
-      - key: PORT
-        value: "8080"
 
   - type: web
     name: padelvivo-frontend
     env: docker
-    repo: https://github.com/VanessaObil/PadelVivo 
+    repo: https://github.com/VanessaObil/PadelVivo
     branch: main
     region: oregon
     plan: free
     dockerfilePath: ./PADELVIVO/Dockerfile
     envVars:
       - key: REACT_APP_BACKEND_URL
-        value: https://padelvivo-backend.onrender.com 
+        value: https://padelvivo-backend.onrender.com
