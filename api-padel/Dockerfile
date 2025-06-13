@@ -1,5 +1,5 @@
 # Etapa 1: Construir con Maven usando Java 21
-FROM FROM FROM eclipse-temurin:21-jdk-jammy AS build
+FROM eclipse-temurin:21-jdk-jammy AS build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Ejecutar con JDK ligero
+# Etapa 2: Imagen final ligera
 FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
