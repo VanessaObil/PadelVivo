@@ -1,5 +1,5 @@
-# Etapa 1: Build con Maven y Java 21
-FROM maven:eclipse-temurin:21-jdk AS build
+# Etapa 1: Construir con Maven usando Java 21
+FROM maven:3.9.6-jdk-21 AS build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagen ligera para ejecutar Spring Boot
+# Etapa 2: Ejecutar con JDK ligero
 FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
