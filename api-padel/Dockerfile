@@ -1,5 +1,5 @@
 # Etapa 1: Construir con Maven y Java 21
-FROM maven:3.9.9-jdk-21 AS build
+FROM maven:3.9.8-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
