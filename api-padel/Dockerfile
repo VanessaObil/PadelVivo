@@ -1,21 +1,18 @@
-# Etapa 1: construir con Maven
-FROM maven:3.9.4-jdk-21 AS build
+# Etapa 1: Construir con Maven
+FROM maven:3.9.6-jdk-17 AS build
 
 WORKDIR /app
 
-# Copia archivos de pom y código fuente
 COPY pom.xml .
 COPY src ./src
 
-# Construye el proyecto (sin tests para acelerar)
 RUN mvn clean package -DskipTests
 
-# Etapa 2: imagen de ejecución
-FROM eclipse-temurin:21-jdk-alpine
+# Etapa 2: Ejecutar con JDK
+FROM eclipse-temurin:17-jdk-alpine
+
 WORKDIR /app
 
-# Copia el JAR generado en la etapa anterior
 COPY --from=build /app/target/api-padel-0.0.1-SNAPSHOT.jar app.jar
 
-# Ejecuta la app
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
