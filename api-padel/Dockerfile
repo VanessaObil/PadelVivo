@@ -3,7 +3,9 @@ FROM maven:3.9.8-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-COPY pom.xml ./
+# Copiar certs/, pom.xml y src/
+COPY certs/ certs/
+COPY pom.xml .
 COPY src ./src
 
 # Construir el proyecto
@@ -14,8 +16,9 @@ FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
-# Copiar el JAR generado
+# Copiar JAR y certs/
 COPY --from=build /app/target/api-padel-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/certs /app/certs
 
 EXPOSE 8080
 
