@@ -1,5 +1,5 @@
 # Etapa 1: Construir con Maven usando Java 21
-FROM FROM FROM eclipse-temurin:21-jdk-jammy AS build AS build
+FROM FROM FROM eclipse-temurin:21-jdk-jammy AS build
 
 WORKDIR /app
 
