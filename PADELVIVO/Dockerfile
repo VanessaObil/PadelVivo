@@ -1,17 +1,21 @@
-FROM node:18 AS build
-
+# Fase 1: Construcción con Node.js y Angular CLI
+FROM node:18-alpine as build-stage
 WORKDIR /app
 
-# Copia todo el contenido del frontend
-COPY . .
-
+# Copiar dependencias
+COPY package*.json ./
 RUN npm install
-RUN npm run build -- --configuration production
 
+# Instalar Angular CLI globalmente
+RUN npm install -g @angular/cli
+
+# Copiar resto del código y construir
+COPY . .
+RUN ng build --configuration=production
+
+# Fase 2: Servidor Nginx
 FROM nginx:alpine
-
-COPY --from=build /app/dist/padelvivo /usr/share/nginx/html
+COPY --from=build-stage /app/dist/padelvivo/browser /usr/share/nginx/html
 
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]

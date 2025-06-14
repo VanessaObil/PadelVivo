@@ -1,20 +1,22 @@
-version: '3.8'
-
 services:
   backend:
     build:
       context: ./api-padel
+      dockerfile: Dockerfile
+    container_name: backend-padelvivo
     ports:
       - "8080:8080"
     environment:
-      DB_URL: ${DB_URL}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-    depends_on:
-      - frontend
+      DB_URL: jdbc:mariadb://host.docker.internal:3308/PadelVivo
+      DB_USERNAME: root
+      DB_PASSWORD: rootroot
+    restart: unless-stopped
 
   frontend:
     build:
       context: ./PADELVIVO
+      dockerfile: Dockerfile
+    container_name: frontend-padelvivo
     ports:
       - "80:80"
+    restart: unless-stopped
